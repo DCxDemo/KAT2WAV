@@ -1,7 +1,0 @@
-C:\Users\McD\documents\visual studio 2010\Projects\KAT2WAV\KAT2WAV\bin\Release\KAT2WAV.exe
-C:\Users\McD\documents\visual studio 2010\Projects\KAT2WAV\KAT2WAV\bin\Release\KAT2WAV.pdb
-C:\Users\McD\documents\visual studio 2010\Projects\KAT2WAV\KAT2WAV\obj\x86\Release\KAT2WAV.Properties.Resources.resources
-C:\Users\McD\documents\visual studio 2010\Projects\KAT2WAV\KAT2WAV\obj\x86\Release\KAT2WAV.csproj.GenerateResource.Cache
-C:\Users\McD\documents\visual studio 2010\Projects\KAT2WAV\KAT2WAV\obj\x86\Release\KAT2WAV.exe
-C:\Users\McD\documents\visual studio 2010\Projects\KAT2WAV\KAT2WAV\obj\x86\Release\KAT2WAV.pdb
-C:\Users\McD\Documents\Visual Studio 2010\Projects\KAT2WAV\KAT2WAV\obj\x86\Release\KAT2WAV.MainForm.resources
