@@ -3,3 +3,4 @@
 *.txt eol=crlf
 *.settings eol=crlf
 *.csproj eol=crlf
+*.sln eol=crlf
