@@ -5,6 +5,6 @@
 *.csproj eol=crlf
 *.sln eol=crlf
 LICENSE eol=crlf
-.gitattrubutes eol=crlf
+.gitattributes eol=crlf
 .gitignore eol=crlf
 *.me eol=crlf
