@@ -1,0 +1,15 @@
+C:\Users\McD\AppData\Local\Temporary Projects\KAT2WAV\bin\Debug\KAT2WAV.exe
+C:\Users\McD\AppData\Local\Temporary Projects\KAT2WAV\bin\Debug\KAT2WAV.pdb
+C:\Users\McD\AppData\Local\Temporary Projects\KAT2WAV\obj\x86\Debug\KAT2WAV.Form1.resources
+C:\Users\McD\AppData\Local\Temporary Projects\KAT2WAV\obj\x86\Debug\KAT2WAV.Properties.Resources.resources
+C:\Users\McD\AppData\Local\Temporary Projects\KAT2WAV\obj\x86\Debug\KAT2WAV.csproj.GenerateResource.Cache
+C:\Users\McD\AppData\Local\Temporary Projects\KAT2WAV\obj\x86\Debug\KAT2WAV.exe
+C:\Users\McD\AppData\Local\Temporary Projects\KAT2WAV\obj\x86\Debug\KAT2WAV.pdb
+C:\Users\McD\documents\visual studio 2010\Projects\KAT2WAV\KAT2WAV\obj\x86\Debug\KAT2WAV.exe
+C:\Users\McD\documents\visual studio 2010\Projects\KAT2WAV\KAT2WAV\obj\x86\Debug\KAT2WAV.pdb
+C:\Users\McD\documents\visual studio 2010\Projects\KAT2WAV\KAT2WAV\bin\Debug\KAT2WAV.exe
+C:\Users\McD\documents\visual studio 2010\Projects\KAT2WAV\KAT2WAV\bin\Debug\KAT2WAV.pdb
+C:\Users\McD\documents\visual studio 2010\Projects\KAT2WAV\KAT2WAV\obj\x86\Debug\KAT2WAV.Properties.Resources.resources
+C:\Users\McD\documents\visual studio 2010\Projects\KAT2WAV\KAT2WAV\obj\x86\Debug\KAT2WAV.csproj.GenerateResource.Cache
+C:\Users\McD\Documents\Visual Studio 2010\Projects\KAT2WAV\KAT2WAV\obj\x86\Debug\KAT2WAV.csprojResolveAssemblyReference.cache
+C:\Users\McD\Documents\Visual Studio 2010\Projects\KAT2WAV\KAT2WAV\obj\x86\Debug\KAT2WAV.MainForm.resources
