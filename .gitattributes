@@ -7,4 +7,4 @@
 LICENSE eol=crlf
 .gitattributes eol=crlf
 .gitignore eol=crlf
-*.me eol=crlf
+*.md eol=crlf
