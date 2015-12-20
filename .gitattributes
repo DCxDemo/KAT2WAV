@@ -4,7 +4,7 @@
 *.settings eol=crlf
 *.csproj eol=crlf
 *.sln eol=crlf
-*.sln eol=crlf
-*.sln eol=crlf
-*.sln eol=crlf
-*.sln eol=crlf
+LICENSE eol=crlf
+.gitattrubutes eol=crlf
+.gitignore eol=crlf
+*.me eol=crlf
