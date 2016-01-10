@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.IO;
 using System.Text;
+using System.Linq;
 
 namespace KAT2WAV
 {
@@ -16,11 +17,12 @@ namespace KAT2WAV
         private void convertButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog op = new OpenFileDialog();
-            op.Filter = "Dreamcast KAT Soundbank (*.kat)|*.kat";
+            op.Filter = "Treyarch THPS Soundbank (*.kat, *.xsb)|*.kat;*.xsb";
 
             string bankname = "";
             string katfn = "";
             string wavdir = "";
+            string katext = "";
 
             List<KATWAV> wav = new List<KATWAV>();
 
@@ -29,6 +31,7 @@ namespace KAT2WAV
                 katfn = op.FileName;
                 bankname = Path.GetFileNameWithoutExtension(katfn);
                 wavdir = Path.GetDirectoryName(katfn) + "\\" + bankname;
+                katext = Path.GetExtension(katfn);
 
                 try
                 {
@@ -36,12 +39,27 @@ namespace KAT2WAV
                     {
                         int wavnum = br.ReadInt32();
 
+                       // MessageBox.Show(""+wavnum);
+
                         DateTime ct = File.GetCreationTime(katfn);
 
                         try
                         {
-                            for (int i = 0; i < wavnum; i++) wav.Add(new KATWAV(br.ReadBytes(11 * 4)));
-                            foreach (KATWAV k in wav) k.SetData(br);
+
+                            switch (katext)
+                            {
+                                case ".kat": for (int i = 0; i < wavnum; i++) wav.Add(new KATWAV(br.ReadBytes(11 * 4))); break;
+                                case ".xsb": for (int i = 0; i < wavnum; i++)
+                                    {
+                                        KATWAV t = new KATWAV();
+                                        t.ImportXSBHeader(br);
+                                        wav.Add(t);
+                                    }
+                                    break;
+                            }
+
+                            foreach (KATWAV k in wav) k.SetData(br, katext == ".xsb");
+                          //  MessageBox.Show("headers done!");
                         }
                         catch
                         {
@@ -50,8 +68,19 @@ namespace KAT2WAV
                             MessageBox.Show("Not a KAT file!!!");
                         }
 
+
                         if (wavnum > 0)
                         {
+
+                            foreach (KATWAV k in wav) k.CalculateHash();
+
+                            for (int i = 0; i < wav.Count; i++)
+                                if (wav[i].duped == -1)
+                                    for (int j = i+1; j < wav.Count; j++)
+                                        if (wav[i].datahash == wav[j].datahash)
+                                            //if (wav[i].data.SequenceEqual(wav[j].data))
+                                                wav[j].duped = i;
+                            
                             try
                             {
                                 Directory.CreateDirectory(wavdir);
@@ -66,11 +95,17 @@ namespace KAT2WAV
 
                             foreach (KATWAV k in wav)
                             {
-                                string fn = wavdir + "\\" + bankname +"_"+ p.ToString("000") + ".wav";
+                                string fn = wavdir + "\\" + bankname + "_" + p.ToString("000") + ".wav";
                                 try
                                 {
-                                    k.WriteWAV(fn);
-                                    File.SetCreationTime(fn, ct);
+                                    if (k.duped > -1)
+                                        fn += ".duped_" + k.duped.ToString("000") + ".wav";
+                                    
+                                    if (k.duped == -1)
+                                    {
+                                        k.WriteWAV(fn);
+                                        File.SetCreationTime(fn, ct);
+                                    }
                                 }
                                 catch
                                 {
@@ -81,8 +116,9 @@ namespace KAT2WAV
                             }
 
                             //writes log
-                            //File.WriteAllText(wavdir + "\\log.txt", sb.ToString());
+                           // File.WriteAllText(wavdir + "\\log.txt", sb.ToString());
                         }
+
                         br.Close();
                     }
                 }
@@ -90,9 +126,9 @@ namespace KAT2WAV
                 {
                     MessageBox.Show("Can't open " + katfn);
                 }
-            }
 
-            MessageBox.Show("Done.");
+                MessageBox.Show("Done.");
+            }
         }
     }
 }
