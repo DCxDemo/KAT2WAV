@@ -46,7 +46,7 @@ namespace KAT2WAV
                         try
                         {
 
-                            switch (katext)
+                            switch (katext.ToLower())
                             {
                                 case ".kat": for (int i = 0; i < wavnum; i++) wav.Add(new KATWAV(br.ReadBytes(11 * 4))); break;
                                 case ".xsb": for (int i = 0; i < wavnum; i++)
