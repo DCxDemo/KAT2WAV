@@ -35,7 +35,7 @@ namespace KAT2WAV
 
                 try
                 {
-                    using (BinaryReader br = new BinaryReader(File.Open(katfn, FileMode.Open)))
+                    using (BinaryReader br = new BinaryReader(File.OpenRead(katfn)))
                     {
                         int wavnum = br.ReadInt32();
 
