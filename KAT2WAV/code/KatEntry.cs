@@ -6,6 +6,8 @@ namespace LegacyThps.Containers
 {
     public class KatEntry
     {
+        public bool IsXsb = false;
+
         public int Index = 0;
         public int NumChannels = 0;
         public int Offset = 0;
@@ -14,7 +16,9 @@ namespace LegacyThps.Containers
         public int Loop = 0;
         public int Bits = 0;
         public int Unk = 0;
-        public string Name = ""; //optional empty 16 bytes on dreamcast 
+
+        public int BankIndex;
+        public int SampleIndex;
 
         public byte[] Data;
 
@@ -42,7 +46,7 @@ namespace LegacyThps.Containers
             return new KatEntry(br);
         }
 
-        public void Read(BinaryReader br)
+        public virtual void Read(BinaryReader br)
         {
             NumChannels = br.ReadInt32();
             Offset = br.ReadInt32();
@@ -51,9 +55,13 @@ namespace LegacyThps.Containers
             Loop = br.ReadInt32();
             Bits = br.ReadInt32();
             Unk = br.ReadInt32();
-            Name = (new string(br.ReadChars(16))).Split('\0')[0];
 
-            Console.WriteLine(Name);
+            BankIndex = Unk / 1000;
+            SampleIndex = Unk % 1000;
+
+            br.BaseStream.Position += 16;
+
+            //Name = (new string(br.ReadChars(16))).Split('\0')[0];
         }
 
         public void ImportXSBHeader(BinaryReader b)
@@ -100,14 +108,14 @@ namespace LegacyThps.Containers
 
         }
 
-        public void GetSampleData(BinaryReader br, bool xsb)
+        public void GetSampleData(BinaryReader br)
         {
             br.BaseStream.Position = Offset;
             Data = br.ReadBytes(Size);
 
             //8 bit PCM should be unsigned, means 0x80 = 0 aka silence
             //xbox doesn't need that
-            if (Bits == 8 && !xsb)
+            if (Bits == 8 && !IsXsb)
                 for (int i = 0; i < Data.Length; i++)
                     Data[i] = (byte)((Data[i] + 0x80) % 256);
 
@@ -140,9 +148,14 @@ namespace LegacyThps.Containers
             }
         }
 
+        public virtual string GetName()
+        {
+            return $"{BankIndex}_{SampleIndex}.wav";
+        }
+
         public void Save(string path)
         {
-            string fullpath = Path.Combine(path, $"{(Name != "" ? Name : Index.ToString("0000"))}.wav");
+            string fullpath = Path.Combine(path, GetName());
 
             using (BinaryWriter bw = new BinaryWriter(File.Open(fullpath, FileMode.Create)))
             {
@@ -169,13 +182,12 @@ namespace LegacyThps.Containers
         public override string ToString()
         {
             return
-                "Ch:" + param[channels] + "|" +
-                "Offset:" + param[offset] + "|" +
-                "Size:" + param[size] + "|" +
-                "freq:" + param[freq] + "|" +
-                "Loop:" + ((param[loop] > 0) ? "Yes" : "No") + "|" +
-                "Bits:" + param[bits] + "|" +
-                "unk:" + param[unk];
+                $"Channels: {NumChannels} | " +
+                $"Size: {Size} | " +
+                $"Frequency: {Frequency} | " +
+                $"Loop: {((Loop > 0) ? "Yes" : "No")} |" +
+                $"Bits: {Bits} | " +
+                $"Unk: {Unk}\r\n";
         }
     }
 }
