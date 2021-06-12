@@ -192,8 +192,8 @@
         CHAINCREAK2 = 156,
 
 
-// other late additions go here, DO NOT PUT THEM WITH THE VAB,
-// (or I'll get confused)
+        // other late additions go here, DO NOT PUT THEM WITH THE VAB,
+        // (or I'll get confused)
         SECRETTAPE = 159,
         BUZZER = 160,
 

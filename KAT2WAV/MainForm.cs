@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
+﻿using LegacyThps.Containers;
+using System;
 using System.IO;
-using System.Text;
-using System.Linq;
-using LegacyThps.Containers;
+using System.Windows.Forms;
 
 namespace KAT2WAV
 {
@@ -48,7 +45,7 @@ namespace KAT2WAV
         }
 
         private void ExtractWavs(string filename)
-        { 
+        {
 
 
             /*
@@ -142,6 +139,6 @@ namespace KAT2WAV
             }
  
             */
-            }
+        }
     }
 }

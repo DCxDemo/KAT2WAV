@@ -1,7 +1,7 @@
-﻿using System;
+﻿using LegacyThps.Containers;
+using System;
 using System.IO;
 using System.Windows.Forms;
-using LegacyThps.Containers;
 
 namespace KAT2WAV
 {

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Security.Cryptography;
 
 namespace LegacyThps.Containers
 {
@@ -85,7 +84,7 @@ namespace LegacyThps.Containers
 
         public KatEntry(byte[] buf)
         {
-            param = new int[buf.Length/4];
+            param = new int[buf.Length / 4];
             Buffer.BlockCopy(buf, 0, param, 0, buf.Length);
         }
 
@@ -119,7 +118,7 @@ namespace LegacyThps.Containers
                 for (int i = 0; i < Data.Length; i++)
                     Data[i] = (byte)((Data[i] + 0x80) % 256);
 
-                    //data[i] = (byte)(data[i] << 4 & data[i] >> 4);
+            //data[i] = (byte)(data[i] << 4 & data[i] >> 4);
         }
 
 
@@ -137,7 +136,7 @@ namespace LegacyThps.Containers
                 bw.Write((short)param[channels]);
                 bw.Write(param[freq]);
                 bw.Write((param[freq] * param[channels] * param[bits]) / 8);
-                bw.Write((short)(param[bits]* param[channels]/8));
+                bw.Write((short)(param[bits] * param[channels] / 8));
                 bw.Write((short)param[bits]);
 
                 bw.Write(System.Text.Encoding.ASCII.GetBytes("data"));
