@@ -1,4 +1,4 @@
-﻿namespace KAT2WAV
+﻿namespace kat2wav
 {
     partial class MainForm
     {

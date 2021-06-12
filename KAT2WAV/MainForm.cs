@@ -3,7 +3,7 @@ using System;
 using System.IO;
 using System.Windows.Forms;
 
-namespace KAT2WAV
+namespace kat2wav
 {
     public partial class MainForm : Form
     {

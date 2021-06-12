@@ -8,8 +8,8 @@
     <ProjectGuid>{2AAAFBB2-189B-4FAC-9064-E8150DD75CDA}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KAT2WAV</RootNamespace>
-    <AssemblyName>KAT2WAV</AssemblyName>
+    <RootNamespace>kat2wav</RootNamespace>
+    <AssemblyName>kat2wav</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -56,7 +56,7 @@
     </ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>KAT2WAV.Program</StartupObject>
+    <StartupObject>kat2wav.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>

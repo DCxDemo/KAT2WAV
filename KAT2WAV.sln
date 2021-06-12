@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31313.79
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KAT2WAV", "KAT2WAV\KAT2WAV.csproj", "{2AAAFBB2-189B-4FAC-9064-E8150DD75CDA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kat2wav", "kat2wav\kat2wav.csproj", "{2AAAFBB2-189B-4FAC-9064-E8150DD75CDA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

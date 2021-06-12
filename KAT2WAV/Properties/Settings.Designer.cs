@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KAT2WAV.Properties {
+namespace kat2wav.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
