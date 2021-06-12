@@ -10,6 +10,8 @@ namespace KAT2WAV
 {
     public partial class MainForm : Form
     {
+        Kat kat;
+
         public MainForm()
         {
             InitializeComponent();
@@ -19,29 +21,31 @@ namespace KAT2WAV
         {
             OpenFileDialog op = new OpenFileDialog();
             op.Filter = "Treyarch THPS Soundbank (*.kat, *.xsb)|*.kat;*.xsb";
+            op.Multiselect = true;
 
             if (op.ShowDialog() == DialogResult.OK)
             {
-                try
+                foreach (string file in op.FileNames)
                 {
-                    string bankname = Path.GetFileNameWithoutExtension(op.FileName);
-                    string wavdir = Path.GetDirectoryName(op.FileName) + "\\" + bankname;
-                    string katext = Path.GetExtension(op.FileName);
+                    try
+                    {
+                        string bankname = Path.GetFileNameWithoutExtension(file);
+                        string wavdir = Path.GetDirectoryName(file) + "\\" + bankname;
+                        string katext = Path.GetExtension(file);
 
-                    kat = Kat.FromFile(op.FileName);
-                    kat.Extract(wavdir);
-                }
-                catch
-                {
-                    MessageBox.Show("Can't open " + op.FileName);
-                    return;
+                        kat = Kat.FromFile(file);
+                        kat.Extract(wavdir);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Can't open " + file);
+                        return;
+                    }
                 }
 
                 MessageBox.Show("Done.");
             }
         }
-
-        Kat kat;
 
         private void ExtractWavs(string filename)
         { 
