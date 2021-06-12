@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
 [assembly: AssemblyTitle("KAT2WAV")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("A tool to extract WAV files from KAT found in some TreyArch THPS ports.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("KAT2WAV")]
-[assembly: AssemblyCopyright("Copyright ©  2015")]
+[assembly: AssemblyCopyright("2015, 2021, dcxdemo")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -1,21 +1,39 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Windows.Forms;
+using LegacyThps.Containers;
 
 namespace KAT2WAV
 {
     static class Program
     {
-        /// <summary>
-        /// Главная точка входа для приложения.
-        /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            if (args.Length == 0)
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new MainForm());
+            }
+            else
+            {
+                foreach (var arg in args)
+                {
+                    try
+                    {
+                        Kat kat = Kat.FromFile(arg);
+                        kat.Extract(Path.Combine(
+                            Path.GetDirectoryName(arg),
+                            Path.GetFileNameWithoutExtension(arg)
+                            ));
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Error: {arg}");
+                    }
+                }
+            }
         }
     }
 }
